@@ -1,15 +1,11 @@
 import { createElement as $ } from 'react'
 import styled from '@emotion/styled/macro'
 
-const InputBase = ({
-  value,
-  onChange,
-  multiline,
-  placeholder
-}) =>
-  multiline
-    ? $(Textarea, { onChange, placeholder, value, rows: 5 })
-    : $(Input, { onChange, placeholder, value })
+const InputBase = ({ multiline, ...props }) =>
+  $(multiline
+    ? Textarea
+    : Input,
+    props)
 
 const font = {
   fontFamily: 'inherit',
@@ -29,10 +25,22 @@ const common = {
   '&:focus': {
     outline: 'none'
   },
-  '&::placeholder': font
+  '&::placeholder': {
+    transition: 'opacity .1s cubic-bezier(0.4, 0.0, 0.2, 1)',
+    ...font
+  }
 }
 
-const Input = styled.input(common)
+const focused = ({
+  focused,
+  label
+}) => label && !focused && {
+  '&::placeholder': {
+    opacity: 0
+  }
+}
+
+const Input = styled.input(common, focused)
 
 const Textarea = styled.textarea({
   height: 'auto',
@@ -42,6 +50,6 @@ const Textarea = styled.textarea({
   //   height: 0
   // },
   ...common
-})
+}, focused)
 
 export default InputBase

@@ -1,4 +1,4 @@
-import { createElement as $ } from 'react'
+import { createElement as $, useState } from 'react'
 import InputBase from './InputBase'
 import UnderlineInput from './UnderlineInput'
 import OutlinedInput from './OutlinedInput'
@@ -14,30 +14,34 @@ const TextField = ({
   value,
   onChange
 }) => {
-
+  
+  const [focused, setFocused] = useState(false)
+  const elevated = focused || !!value
+  
   return $('div', null,
     $(variants[variant] || UnderlineInput, {
       label,
-      elevated: !!value
+      elevated
     },
       label &&
         $(InputLabel, {
           label,
           variant,
-          elevated: !!value
+          elevated
         }),
       $(InputBase, {
         multiline,
         placeholder,
         value,
-        onChange
+        onChange,
+        focused,
+        label,
+        onFocus: () => setFocused(true),
+        onBlur: () => setFocused(false)
       })),
     helperText &&
       $(HelperText))
 }
-
-const Filled =({ children }) =>
-  $('div', null, children)
 
 const variants = {
   outlined: OutlinedInput,

@@ -9,7 +9,6 @@ const InputLabel = ({
   $(Container, { elevated, variant }, label)
 
 const Container = styled.label({
-  // Should contain font styles
   display: 'block',
   pointerEvents: 'none',
   position: 'absolute',
