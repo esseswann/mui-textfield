@@ -4,15 +4,16 @@ import styled from '@emotion/styled/macro'
 const OutlinedInput = ({
   label,
   elevated,
+  focused,
   children
 }) =>
   $(Container, null,
     label &&
-      $(TopBorder, null,
+      $(TopBorder, { focused },
         $(LeftTopBorder),
         $(Label, { elevated, label }, label),
         $(RightTopBorder)),
-    $(MainBorder, { label }),
+    $(MainBorder, { label, focused }),
     children)
 
 const Container = styled.div({
@@ -27,11 +28,13 @@ const TopBorder = styled.div({
   right: 0,
   height: 4,
   pointerEvents: 'none',
-  display: 'flex',
-})
+  display: 'flex'
+}, ({ focused }) => focused
+  ? { '& > *': { borderTop: '2px solid blue' } }
+  : { '& > *': { borderTop: '1px solid gray' } }
+)
 
 const LeftTopBorder = styled.div({
-  borderTop: '1px solid gray',
   borderTopLeftRadius: 4,
   flexShrink: 0,
   width: 14 - 4,
@@ -50,14 +53,12 @@ const Label = styled.div({
 )
 
 const RightTopBorder = styled.div({
-  borderTop: '1px solid gray',
   borderTopRightRadius: 4,
   flexGrow: 1,
   height: 4
 })
 
 const MainBorder = styled.div({
-  border: '1px solid gray',
   borderRadius: 4,
   position: 'absolute',
   top: 0,
@@ -65,8 +66,13 @@ const MainBorder = styled.div({
   left: 0,
   right: 0,
   pointerEvents: 'none'
-}, ({ label }) => label && {
-  borderTop: 0
-})
+}, ({ label, focused }) => ({
+  border: focused
+    ? '2px solid blue'
+    : '1px solid gray',
+  ...label && {
+    borderTop: 0
+  }
+}))
 
 export default OutlinedInput
