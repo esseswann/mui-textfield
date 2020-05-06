@@ -1,11 +1,16 @@
 import { createElement as $ } from 'react'
 import styled from '@emotion/styled/macro'
 
-const OutlinedInput = ({ children }) =>
+const OutlinedInput = ({
+  label,
+  children
+}) =>
   $(Container, null,
-    $(LeftTopBorder),
-    $(RightTopBorder),
-    $(MainBorder),
+    label &&
+      $(LeftTopBorder),
+    label &&
+      $(RightTopBorder),
+    $(MainBorder, { label }),
     children)
 
 const Container = styled.div({
@@ -34,13 +39,14 @@ const RightTopBorder = styled.div({
 const MainBorder = styled.div({
   border: '1px solid gray',
   borderRadius: 4,
-  borderTop: 0,
   position: 'absolute',
   top: 0,
   bottom: 0,
   left: 0,
   right: 0,
   pointerEvents: 'none'
+}, ({ label }) => label && {
+  borderTop: 0
 })
 
 export default OutlinedInput
