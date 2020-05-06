@@ -25,6 +25,8 @@ const Container = styled(InputContainer)(({ dense }) => ({
     : 24
 }))
 
-const ValueArea = styled.div()
+const ValueArea = styled.div({
+  flexGrow: 1,
+})
 
 export default UnderlineInput

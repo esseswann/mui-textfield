@@ -5,9 +5,10 @@ const InputLabel = ({
   variant = 'underline',
   elevated,
   label,
-  dense
+  dense,
+  focused
 }) =>
-  $(Container, { elevated, variant, dense }, label)
+  $(Container, { elevated, variant, dense, focused }, label)
 
 const Container = styled.label({
   display: 'block',
@@ -15,7 +16,10 @@ const Container = styled.label({
   position: 'absolute',
   transition: 'transform .1s cubic-bezier(0.4, 0.0, 0.2, 1)',
   transformOrigin: 'left top',
-}, ({ elevated, variant, dense }) => ({
+}, ({ elevated, variant, dense, focused }) => ({
+  ...focused && {
+    color: 'blue'
+  },
   ...variant === 'filled' && {
     marginTop: -8
   },

@@ -7,20 +7,34 @@ const OutlinedInput = ({
   elevated,
   focused,
   dense,
-  children
+  Input,
+  Label,
+  StartAdornment,
+  EndAdornment,
 }) =>
   $(Container, { dense },
     label &&
       $(TopBorder, { focused },
         $(LeftTopBorder),
-        $(Label, { elevated, label }, label),
+        $(InvisibleLabel, { elevated, label }, label),
         $(RightTopBorder)),
-    $(MainBorder, { label, focused }))
+    $(MainBorder, { label, focused }),
+    StartAdornment,
+    $(ValueArea, { dense },
+      Label,
+      Input),
+    EndAdornment)
 
-const Container = styled(InputContainer)(({ dense }) => ({
+const Container = styled(InputContainer)({
+  padding: '0 14px',
+  alignItems: 'center'
+})
+
+const ValueArea = styled.div(({ dense }) => ({
+  flexGrow: 1,
   padding: dense
-    ? '8px 14px'
-    : '16px 14px'
+    ? '8px 0'
+    : '16px 0'
 }))
 
 const TopBorder = styled.div({
@@ -43,7 +57,7 @@ const LeftTopBorder = styled.div({
   height: 4
 })
 
-const Label = styled.div({
+const InvisibleLabel = styled.div({
   opacity: 0,
   overflow: 'hidden',
   pointerEvents: 'none',

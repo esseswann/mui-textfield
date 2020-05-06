@@ -33,7 +33,8 @@ const TextField = ({
           label,
           dense,
           variant,
-          elevated
+          elevated,
+          focused
         }),
       Input:
         $(InputBase, {
