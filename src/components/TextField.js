@@ -6,13 +6,14 @@ import InputLabel from './InputLabel'
 const TextField = ({
   label,
   helperText,
+  placeholder,
   multiline,
   variant
 }) =>
   $('div', null,
     $(variants[variant] || Underline, { label },
       label && $(InputLabel, { label }),
-      $(InputBase, { multiline })),
+      $(InputBase, { multiline, placeholder })),
     helperText &&
       $(HelperText))
 

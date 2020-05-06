@@ -5,10 +5,11 @@ const InputBase = ({
   value,
   onChange,
   multiline,
+  placeholder,
 }) =>
   multiline
-    ? $(Input, { value, onChange })
-    : $(Textarea, { onChange }, value)
+    ? $(Input, { value, placeholder, onChange })
+    : $(Textarea, { onChange, placeholder, }, value)
 
 const common = {
   display: 'block',
