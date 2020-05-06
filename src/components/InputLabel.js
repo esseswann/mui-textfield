@@ -12,9 +12,10 @@ const InputLabel = ({
 const Container = styled.div({
   // Should contain font styles
   pointerEvents: 'none',
-  position: 'absolute'
-}, ({ elevated }) => elevated && {
+  position: 'absolute',
+  transition: 'transform .1s cubic-bezier(0.4, 0.0, 0.2, 1)',
   transformOrigin: 'left top',
+}, ({ elevated }) => elevated && {
   transform: 'translate(0, -26px) scale(0.75)'
 })
 
