@@ -54,6 +54,11 @@ const types = {
     placeholder: 'Placeholder that is much longer that the label',
     helperText
   },
+  adornment: {
+    label: 'Different label',
+    placeholder: 'Placeholder that is much longer that the label',
+    startAdornment: $('div', null, 'kg')
+  },
   multiline: {
     label,
     placeholder,
