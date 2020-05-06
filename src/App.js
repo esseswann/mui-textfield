@@ -13,7 +13,11 @@ const App = () => {
       $(VariantContainer, null,
         map(([type, params]) =>
           $(TextFieldContainer, null, 
-            $(TextField, { variant, ...params})),
+            $(TextField, {
+              value,
+              onChange: event => setValue(event.target.value),
+              variant,
+              ...params})),
           entries(types))),
       entries(variants)))
 }

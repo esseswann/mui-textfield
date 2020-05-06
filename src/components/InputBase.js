@@ -8,8 +8,8 @@ const InputBase = ({
   placeholder,
 }) =>
   multiline
-    ? $(Textarea, { rows: 5, onChange, placeholder, }, value)
-    : $(Input, { value, placeholder, onChange })
+    ? $(Textarea, { onChange, placeholder, value, rows: 5 })
+    : $(Input, { onChange, placeholder, value })
 
 const font = {
   fontFamily: 'inherit',

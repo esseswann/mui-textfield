@@ -8,12 +8,23 @@ const TextField = ({
   helperText,
   placeholder,
   multiline,
-  variant
+  variant,
+  value,
+  onChange
 }) =>
   $('div', null,
     $(variants[variant] || Underline, { label },
-      label && $(InputLabel, { label }),
-      $(InputBase, { multiline, placeholder })),
+      label &&
+        $(InputLabel, {
+          label,
+          elevated: !!value
+        }),
+      $(InputBase, {
+        multiline,
+        placeholder,
+        value,
+        onChange
+      })),
     helperText &&
       $(HelperText))
 
