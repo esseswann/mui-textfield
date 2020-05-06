@@ -21,8 +21,8 @@ const OutlinedInput = ({
         $(RightTopBorder)),
     $(MainBorder, { label, focused }),
     StartAdornment,
-    RenderValue,
     $(ValueArea, { dense },
+      RenderValue,
       Label,
       Input),
     EndAdornment)
@@ -34,6 +34,8 @@ const Container = styled(InputContainer)({
 
 const ValueArea = styled.div(({ dense }) => ({
   flexGrow: 1,
+  display: 'flex',
+  flexWrap: 'wrap',
   padding: dense
     ? '8px 0'
     : '16px 0'

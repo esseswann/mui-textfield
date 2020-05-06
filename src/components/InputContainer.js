@@ -5,6 +5,7 @@ const InputContainer = styled.div({
   minWidth: 200,
   boxSizing: 'border-box',
   display: 'flex',
+  flexWrap: 'wrap',
   minHeight: 40
 })
 

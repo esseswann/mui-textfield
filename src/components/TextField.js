@@ -21,7 +21,7 @@ const TextField = ({
 }) => {
   
   const [focused, setFocused] = useState(false)
-  const elevated = focused || !!value
+  const elevated = renderValue || focused || !!value
   
   return $('div', null,
     $(variants[variant] || UnderlineInput, {

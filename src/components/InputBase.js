@@ -21,6 +21,7 @@ const common = {
   padding: 0,
   border: 'none',
   minWidth: 140,
+  flexShrink: 0,
   caretColor: 'blue',
   ...font,
   '&:focus': {

@@ -3,6 +3,7 @@ import TextField from './components/TextField'
 import { Chip, Chips } from './components/Chip'
 import styled from '@emotion/styled/macro'
 import map from 'lodash/fp/map'
+import range from 'lodash/fp/range'
 import entries from 'lodash/fp/entries'
 
 const App = () => {
@@ -64,7 +65,7 @@ const types = {
   multiSelect: {
     label: 'Different label',
     placeholder: 'Placeholder that is much longer that the label',
-    renderValue: $(Fragment, null, $(Chip, null, 'test'), $(Chip, null, 'test')),
+    renderValue: $(Fragment, null, map(() => $(Chip, null, 'test'), range(0, 10))),
     endAdornment: $('div', null, 'kg'),
   },
   multiline: {
@@ -94,7 +95,8 @@ const VariantContainer = styled.div({
 })
 
 const TextFieldContainer = styled.div({
-  margin: 8
+  margin: 8,
+  maxWidth: 300
 })
 
 export default App
