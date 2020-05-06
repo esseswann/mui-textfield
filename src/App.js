@@ -1,7 +1,9 @@
 import { createElement as $, useState } from 'react'
 import TextField from './components/TextField'
 import styled from '@emotion/styled/macro'
+import concat from 'lodash/fp/concat'
 import map from 'lodash/fp/map'
+import set from 'lodash/fp/set'
 import entries from 'lodash/fp/entries'
 
 const App = () => {
@@ -18,7 +20,9 @@ const App = () => {
               onChange: event => setValue(event.target.value),
               variant,
               ...params})),
-          entries(types))),
+          concat(
+            entries(types),
+            map(set('1.dense', true), entries(types))))),
       entries(variants)))
 }
 
