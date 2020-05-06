@@ -14,26 +14,28 @@ const OutlinedInput = ({
     children)
 
 const Container = styled.div({
-  MainBorderRadius: 4,
-  position: 'relative'
+  position: 'relative',
+  padding: '16px 14px'
 })
 
 const LeftTopBorder = styled.div({
   position: 'absolute',
-  background: 'gray',
-  height: 1,
-  width: 8,
-  left: 4,
-  top: 0
+  width: 14 - 4,
+  height: 4,
+  left: 0,
+  top: 0,
+  borderTop: '1px solid gray',
+  borderTopLeftRadius: 4
 })
 
 const RightTopBorder = styled.div({
-  height: 1,
-  background: 'gray',
   position: 'absolute',
   width: '60%',
-  right: 4,
-  top: 0
+  height: 4,
+  right: 0,
+  top: 0,
+  borderTop: '1px solid gray',
+  borderTopRightRadius: 4
 })
 
 const MainBorder = styled.div({

@@ -8,6 +8,7 @@ const InputLabel = ({
 
 const Container = styled.div({
   pointerEvents: 'none',
+  position: 'absolute'
 })
 
 export default InputLabel

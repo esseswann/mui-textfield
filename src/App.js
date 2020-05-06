@@ -18,14 +18,23 @@ const App = () => {
       entries(variants)))
 }
 
+const label = 'label'
+const helperText = 'helperText'
+const multiline = true
+
 const types = {
   value: {},
   label: {
-    label: 'test'
+    label
   },
   helperText: {
-    label: 'test',
-    helperText: 'rest'
+    label,
+    helperText
+  },
+  multiline: {
+    label,
+    helperText,
+    multiline,
   }
 }
 
