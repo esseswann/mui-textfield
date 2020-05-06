@@ -9,8 +9,9 @@ const InputLabel = ({
     elevated
   }, label)
 
-const Container = styled.div({
+const Container = styled.label({
   // Should contain font styles
+  display: 'block',
   pointerEvents: 'none',
   position: 'absolute',
   transition: 'transform .1s cubic-bezier(0.4, 0.0, 0.2, 1)',

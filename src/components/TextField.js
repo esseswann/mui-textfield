@@ -11,9 +11,13 @@ const TextField = ({
   variant,
   value,
   onChange
-}) =>
-  $('div', null,
-    $(variants[variant] || Underline, { label, elevated: !!value },
+}) => {
+
+  return $('div', null,
+    $(variants[variant] || Underline, {
+      label,
+      elevated: !!value
+    },
       label &&
         $(InputLabel, {
           label,
@@ -27,6 +31,7 @@ const TextField = ({
       })),
     helperText &&
       $(HelperText))
+}
 
 const Filled =({ children }) =>
   $('div', null, children)
