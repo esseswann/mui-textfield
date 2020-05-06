@@ -19,7 +19,8 @@ const OutlinedInput = ({
 
 const Container = styled.div({
   position: 'relative',
-  minWidth: 'calc(200px - (14px * 2))'
+  minWidth: 200,
+  boxSizing: 'border-box',
 }, ({ dense }) => ({
   padding: dense
     ? '8px 14px'

@@ -9,22 +9,24 @@ const App = () => {
   const [value, setValue] = useState('')
 
   return $(Container, null,
-    map(([variant, types]) =>
-      $(VariantContainer, null,
-        map(([type, params]) =>
+    ...map(([variant, types]) =>
+      $(VariantContainer, { key: variant },
+        ...map(([type, params]) =>
           $(TextFieldContainer, null, 
             $(TextField, {
+              key: type,
               value,
               onChange: event => setValue(event.target.value),
               variant,
               ...params})),
           entries(types))),
       entries(variants)),
-    map(([variant, types]) =>
+    ...map(([variant, types]) =>
       $(VariantContainer, null,
-        map(([type, params]) =>
+        ...map(([type, params]) =>
           $(TextFieldContainer, null, 
             $(TextField, {
+              key: type,
               value,
               dense: true,
               onChange: event => setValue(event.target.value),

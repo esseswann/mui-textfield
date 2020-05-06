@@ -14,7 +14,8 @@ const UnderlineInput = ({
 
 const Container = styled.div({
   position: 'relative',
-  minWidth: 200
+  minWidth: 200,
+  boxSizing: 'border-box'
 }, ({ dense }) => ({
   paddingTop: dense
     ? 16

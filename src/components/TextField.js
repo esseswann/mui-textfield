@@ -54,6 +54,6 @@ const variants = {
 }
 
 const HelperText = () =>
-  $('small', null, 'helper text')
+  $('small', null, '')
 
 export default TextField
