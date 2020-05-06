@@ -1,34 +1,39 @@
-import { createElement as $ } from 'react'
-import InputBase from './InputBase'
+import { createElement as $, useState } from 'react'
+import TextField from './components/TextField'
 import styled from '@emotion/styled/macro'
+import map from 'lodash/fp/map'
 
-const App = ({
-  label,
-  multiline,
-  variant
-}) =>
-  $('div', null,
-    $(variants[variant] || Underline, { label },
-      label && $(Label),
-      $(InputBase, { multiline })),
-    $(HelperText))
+const App = () => {
 
-const Outlined = ({ children }) =>
-  $('div', null, children)
-const Filled =({ children }) =>
-  $('div', null, children)
-const Underline = ({ children }) =>
-  $('div', null, children)
+  const [value, setValue] = useState('')
 
-const variants = {
-  outlined: Outlined,
-  filled: Filled,
-  underline: Underline
+  return $(Container, null,
+    map(types =>
+      $(VariantCotnainer, null,
+        map(params =>
+          $(TextField, params),
+          types)),
+      variants))
 }
 
-const Label = () => 'label'
+const types = {
+  value: {},
+  label: {
+    label: 'test'
+  }
+}
 
-const HelperText = () =>
-  $('div', null, 'helper text')
+const variants = {
+  filled: types,
+  outlined: types,
+  underline: types,
+}
+
+const Container = styled.div({})
+
+const VariantCotnainer = styled.div({
+  margin: 8,
+  display: 'flex',
+})
 
 export default App
