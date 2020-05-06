@@ -13,6 +13,7 @@ const TextField = ({
   multiline,
   variant,
   value,
+  startAdornment,
   onChange
 }) => {
   
@@ -25,24 +26,27 @@ const TextField = ({
       focused,
       elevated,
       dense,
-    },
-      label &&
+      StartAdornment:
+        startAdornment,
+      Label:
         $(InputLabel, {
           label,
           dense,
           variant,
           elevated
         }),
-      $(InputBase, {
-        multiline,
-        placeholder,
-        value,
-        onChange,
-        focused,
-        label,
-        onFocus: () => setFocused(true),
-        onBlur: () => setFocused(false)
-      })),
+      Input:
+        $(InputBase, {
+          multiline,
+          placeholder,
+          value,
+          onChange,
+          focused,
+          label,
+          onFocus: () => setFocused(true),
+          onBlur: () => setFocused(false)
+        })
+    }),
     helperText &&
       $(HelperText))
 }

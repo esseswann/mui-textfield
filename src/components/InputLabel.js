@@ -20,6 +20,11 @@ const Container = styled.label({
     marginTop: -8
   },
   ...elevated && {
+    left: variant === 'underline'
+      ? 0
+      : variant === 'outlined'
+        ? 14
+        : null,
     transform: `translate(0, -${(dense ? denseVariants : variants)[variant]}px) scale(0.75)`
   }
 }))

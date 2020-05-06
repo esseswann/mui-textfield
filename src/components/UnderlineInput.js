@@ -5,22 +5,33 @@ const UnderlineInput = ({
   className,
   children,
   focused,
-  dense
+  dense,
+  StartAdornment,
+  EndAdornment,
+  Label,
+  Input,
 }) =>
   $(Container, { className, dense },
-    children,
+    StartAdornment,
+    $(ValueArea, null,
+      Label,
+      Input),
+    EndAdornment,
     $(BottomBorder),
     $(BorderBottomFocused, { focused }))
 
 const Container = styled.div({
   position: 'relative',
   minWidth: 200,
+  display: 'flex',
   boxSizing: 'border-box'
 }, ({ dense }) => ({
   paddingTop: dense
     ? 16
     : 24
 }))
+
+const ValueArea = styled.div()
 
 const BottomBorder = styled.div({
   bottom: 0,
