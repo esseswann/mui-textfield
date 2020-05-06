@@ -1,9 +1,7 @@
 import { createElement as $, useState } from 'react'
 import TextField from './components/TextField'
 import styled from '@emotion/styled/macro'
-import concat from 'lodash/fp/concat'
 import map from 'lodash/fp/map'
-import set from 'lodash/fp/set'
 import entries from 'lodash/fp/entries'
 
 const App = () => {

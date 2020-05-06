@@ -4,9 +4,10 @@ import styled from '@emotion/styled/macro'
 const InputLabel = ({
   variant = 'underline',
   elevated,
-  label
+  label,
+  dense
 }) =>
-  $(Container, { elevated, variant }, label)
+  $(Container, { elevated, variant, dense }, label)
 
 const Container = styled.label({
   display: 'block',
@@ -14,17 +15,23 @@ const Container = styled.label({
   position: 'absolute',
   transition: 'transform .1s cubic-bezier(0.4, 0.0, 0.2, 1)',
   transformOrigin: 'left top',
-}, ({ elevated, variant }) => ({
+}, ({ elevated, variant, dense }) => ({
   ...variant === 'filled' && {
     marginTop: -8
   },
   ...elevated && {
-    transform: `translate(0, -${variants[variant]}px) scale(0.75)`
+    transform: `translate(0, -${(dense ? denseVariants : variants)[variant]}px) scale(0.75)`
   }
 }))
 
 const variants = {
   outlined: 26,
+  filled: 8,
+  underline: 16
+}
+
+const denseVariants = {
+  outlined: 18,
   filled: 8,
   underline: 16
 }

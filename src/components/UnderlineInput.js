@@ -4,18 +4,22 @@ import styled from '@emotion/styled/macro'
 const UnderlineInput = ({
   className,
   children,
-  focused
+  focused,
+  dense
 }) =>
-  $(Container, { className },
+  $(Container, { className, dense },
     children,
     $(BottomBorder),
     $(BorderBottomFocused, { focused }))
 
 const Container = styled.div({
   position: 'relative',
-  paddingTop: '24px',
   minWidth: 200
-})
+}, ({ dense }) => ({
+  paddingTop: dense
+    ? 16
+    : 24
+}))
 
 const BottomBorder = styled.div({
   bottom: 0,

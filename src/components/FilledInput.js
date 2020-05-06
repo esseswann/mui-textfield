@@ -8,10 +8,14 @@ const FilledInput = styled(UnderlineInput)({
   borderTopRightRadius: 4,
   background: 'rgba(0,0,0,.05)',
   minWidth: 'calc(200px - (12px * 2))'
-}, ({ label }) => ({
+}, ({ label, dense }) => ({
   padding: label
-    ? '24px 12px 8px'
-    : '16px 12px'
+    ? dense
+      ? '20px 12px 4px'
+      : '24px 12px 8px'
+    : dense
+      ? '12px 8px'
+      : '16px 12px'
 }))
 
 export default FilledInput

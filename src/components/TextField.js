@@ -7,6 +7,7 @@ import InputLabel from './InputLabel'
 
 const TextField = ({
   label,
+  dense,
   helperText,
   placeholder,
   multiline,
@@ -22,11 +23,13 @@ const TextField = ({
     $(variants[variant] || UnderlineInput, {
       label,
       focused,
-      elevated
+      elevated,
+      dense,
     },
       label &&
         $(InputLabel, {
           label,
+          dense,
           variant,
           elevated
         }),

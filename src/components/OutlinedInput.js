@@ -5,9 +5,10 @@ const OutlinedInput = ({
   label,
   elevated,
   focused,
+  dense,
   children
 }) =>
-  $(Container, null,
+  $(Container, { dense },
     label &&
       $(TopBorder, { focused },
         $(LeftTopBorder),
@@ -18,9 +19,12 @@ const OutlinedInput = ({
 
 const Container = styled.div({
   position: 'relative',
-  padding: '16px 14px',
   minWidth: 'calc(200px - (14px * 2))'
-})
+}, ({ dense }) => ({
+  padding: dense
+    ? '8px 14px'
+    : '16px 14px'
+}))
 
 const TopBorder = styled.div({
   position: 'absolute',
