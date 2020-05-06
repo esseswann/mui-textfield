@@ -18,7 +18,8 @@ const OutlinedInput = ({
 
 const Container = styled.div({
   position: 'relative',
-  padding: '16px 14px'
+  padding: '16px 14px',
+  minWidth: 'calc(200px - (14px * 2))'
 })
 
 const TopBorder = styled.div({

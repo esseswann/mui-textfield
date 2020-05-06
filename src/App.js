@@ -20,9 +20,19 @@ const App = () => {
               onChange: event => setValue(event.target.value),
               variant,
               ...params})),
-          concat(
-            entries(types),
-            map(set('1.dense', true), entries(types))))),
+          entries(types))),
+      entries(variants)),
+    map(([variant, types]) =>
+      $(VariantContainer, null,
+        map(([type, params]) =>
+          $(TextFieldContainer, null, 
+            $(TextField, {
+              value,
+              dense: true,
+              onChange: event => setValue(event.target.value),
+              variant,
+              ...params})),
+          entries(types))),
       entries(variants)))
 }
 
@@ -59,7 +69,7 @@ const variants = {
 }
 
 const Container = styled.div({
-  margin: 16,
+  padding: 16,
   fontSize: '15px',
   lineHeight: '24px',
   letterSpacing: 1

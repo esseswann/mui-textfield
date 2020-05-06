@@ -14,6 +14,7 @@ const UnderlineInput = ({
 const Container = styled.div({
   position: 'relative',
   paddingTop: '24px',
+  minWidth: 200
 })
 
 const BottomBorder = styled.div({
