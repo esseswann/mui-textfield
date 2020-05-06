@@ -4,6 +4,7 @@ import UnderlineInput from './UnderlineInput'
 import OutlinedInput from './OutlinedInput'
 import FilledInput from './FilledInput'
 import InputLabel from './InputLabel'
+import styled from '@emotion/styled/macro'
 
 const TextField = ({
   label,
@@ -13,7 +14,9 @@ const TextField = ({
   multiline,
   variant,
   value,
+  renderValue,
   startAdornment,
+  endAdornment,
   onChange
 }) => {
   
@@ -26,8 +29,13 @@ const TextField = ({
       focused,
       elevated,
       dense,
-      StartAdornment:
-        startAdornment,
+      RenderValue: renderValue,
+      StartAdornment: startAdornment &&
+        $(StartAdornmentHolder, null, 
+          startAdornment),
+      EndAdornment: startAdornment &&
+        $(EndAdornmentHolder, null, 
+          startAdornment),
       Label:
         $(InputLabel, {
           label,
@@ -51,6 +59,14 @@ const TextField = ({
     helperText &&
       $(HelperText))
 }
+
+const StartAdornmentHolder = styled.div({
+  marginRight: 8
+})
+
+const EndAdornmentHolder = styled.div({
+  marginLeft: 8
+})
 
 const variants = {
   outlined: OutlinedInput,

@@ -11,6 +11,7 @@ const OutlinedInput = ({
   Label,
   StartAdornment,
   EndAdornment,
+  RenderValue
 }) =>
   $(Container, { dense },
     label &&
@@ -20,6 +21,7 @@ const OutlinedInput = ({
         $(RightTopBorder)),
     $(MainBorder, { label, focused }),
     StartAdornment,
+    RenderValue,
     $(ValueArea, { dense },
       Label,
       Input),

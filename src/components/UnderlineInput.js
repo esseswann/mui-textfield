@@ -10,9 +10,11 @@ const UnderlineInput = ({
   EndAdornment,
   Label,
   Input,
+  RenderValue,
 }) =>
   $(Container, { dense },
     StartAdornment,
+    RenderValue,
     $(ValueArea, null,
       Label,
       Input),

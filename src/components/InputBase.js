@@ -20,7 +20,7 @@ const common = {
   margin: 0,
   padding: 0,
   border: 'none',
-  width: '100%',
+  minWidth: 140,
   caretColor: 'blue',
   ...font,
   '&:focus': {

@@ -1,5 +1,6 @@
-import { createElement as $, useState } from 'react'
+import { createElement as $, useState, Fragment } from 'react'
 import TextField from './components/TextField'
+import { Chip, Chips } from './components/Chip'
 import styled from '@emotion/styled/macro'
 import map from 'lodash/fp/map'
 import entries from 'lodash/fp/entries'
@@ -57,7 +58,14 @@ const types = {
   adornment: {
     label: 'Different label',
     placeholder: 'Placeholder that is much longer that the label',
-    startAdornment: $('div', null, 'kg')
+    startAdornment: $('div', null, 'kg'),
+    endAdornment: $('div', null, 'kg')
+  },
+  multiSelect: {
+    label: 'Different label',
+    placeholder: 'Placeholder that is much longer that the label',
+    renderValue: $(Fragment, null, $(Chip, null, 'test'), $(Chip, null, 'test')),
+    endAdornment: $('div', null, 'kg'),
   },
   multiline: {
     label,
