@@ -11,6 +11,7 @@ const InputBase = ({
     : $(Textarea, { onChange }, value)
 
 const common = {
+  display: 'block',
   margin: 0,
   padding: 0,
   lineHeight: '24px',

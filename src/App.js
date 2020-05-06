@@ -2,38 +2,51 @@ import { createElement as $, useState } from 'react'
 import TextField from './components/TextField'
 import styled from '@emotion/styled/macro'
 import map from 'lodash/fp/map'
+import entries from 'lodash/fp/entries'
 
 const App = () => {
 
   const [value, setValue] = useState('')
 
   return $(Container, null,
-    map(types =>
-      $(VariantCotnainer, null,
-        map(params =>
-          $(TextField, params),
-          types)),
-      variants))
+    map(([variant, types]) =>
+      $(VariantContainer, null,
+        map(([type, params]) =>
+          $(TextFieldContainer, null, 
+            $(TextField, { variant, ...params})),
+          entries(types))),
+      entries(variants)))
 }
 
 const types = {
   value: {},
   label: {
     label: 'test'
+  },
+  helperText: {
+    label: 'test',
+    helperText: 'rest'
   }
 }
 
 const variants = {
   filled: types,
   outlined: types,
-  underline: types,
+  underline: types
 }
 
-const Container = styled.div({})
+const Container = styled.div({
+  fontSize: '15px',
+  lineHeight: '24px'
+})
 
-const VariantCotnainer = styled.div({
+const VariantContainer = styled.div({
   margin: 8,
   display: 'flex',
+})
+
+const TextFieldContainer = styled.div({
+  margin: 8
 })
 
 export default App
