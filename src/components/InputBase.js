@@ -8,25 +8,39 @@ const InputBase = ({
   placeholder,
 }) =>
   multiline
-    ? $(Input, { value, placeholder, onChange })
-    : $(Textarea, { onChange, placeholder, }, value)
+    ? $(Textarea, { rows: 5, onChange, placeholder, }, value)
+    : $(Input, { value, placeholder, onChange })
+
+const font = {
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  letterSpacing: 'inherit',
+  lineHeight: '24px',
+}
 
 const common = {
   display: 'block',
   margin: 0,
   padding: 0,
-  lineHeight: '24px',
   border: 'none',
-  fontFamily: 'inherit',
-  fontSize: 'inherit',
-  width: 128,
+  width: '100%',
+  ...font,
   '&:focus': {
     outline: 'none'
-  }
+  },
+  '&::placeholder': font
 }
 
 const Input = styled.input(common)
 
-const Textarea = styled.input(common)
+const Textarea = styled.textarea({
+  height: 'auto',
+  resize: 'none',
+  // '&::-webkit-scrollbar': {
+  //   width: 0,
+  //   height: 0
+  // },
+  ...common
+})
 
 export default InputBase

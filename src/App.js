@@ -20,7 +20,7 @@ const App = () => {
 
 const label = 'Label'
 const helperText = 'Helper text'
-const placeholder = 'Placeholder'
+const placeholder = 'Placeholder that is much longer that the label'
 const multiline = true
 
 const types = {
