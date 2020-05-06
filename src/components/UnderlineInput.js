@@ -3,11 +3,13 @@ import styled from '@emotion/styled/macro'
 
 const UnderlineInput = ({
   className,
-  children
+  children,
+  focused
 }) =>
   $(Container, { className },
     children,
-    $(BottomBorder))
+    $(BottomBorder),
+    $(BorderBottomFocused, { focused }))
 
 const Container = styled.div({
   position: 'relative',
@@ -19,7 +21,14 @@ const BottomBorder = styled.div({
   left: 0,
   right: 0,
   position: 'absolute',
-  borderBottom: '1px solid gray'  
+  borderBottom: '1px solid gray'
 })
+
+const BorderBottomFocused = styled(BottomBorder)({
+  transition: 'all .1s cubic-bezier(0.4, 0.0, 0.2, 1)',
+  borderBottom: '2px solid blue'
+}, ({ focused }) => focused
+  ? { left: 0, right: 0, }
+  : { left: '50%', right: '50%' })
 
 export default UnderlineInput

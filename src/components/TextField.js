@@ -21,6 +21,7 @@ const TextField = ({
   return $('div', null,
     $(variants[variant] || UnderlineInput, {
       label,
+      focused,
       elevated
     },
       label &&
