@@ -13,7 +13,7 @@ const TextField = ({
   onChange
 }) =>
   $('div', null,
-    $(variants[variant] || Underline, { label },
+    $(variants[variant] || Underline, { label, elevated: !!value },
       label &&
         $(InputLabel, {
           label,

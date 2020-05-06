@@ -3,13 +3,15 @@ import styled from '@emotion/styled/macro'
 
 const OutlinedInput = ({
   label,
+  elevated,
   children
 }) =>
   $(Container, null,
     label &&
-      $(LeftTopBorder),
-    label &&
-      $(RightTopBorder),
+      $(TopBorder, null,
+        $(LeftTopBorder),
+        $(Label, { elevated, label }, label),
+        $(RightTopBorder)),
     $(MainBorder, { label }),
     children)
 
@@ -18,24 +20,40 @@ const Container = styled.div({
   padding: '16px 14px'
 })
 
-const LeftTopBorder = styled.div({
+const TopBorder = styled.div({
   position: 'absolute',
-  width: 14 - 4,
-  height: 4,
-  left: 0,
   top: 0,
-  borderTop: '1px solid gray',
-  borderTopLeftRadius: 4
+  left: 0,
+  right: 0,
+  height: 4,
+  pointerEvents: 'none',
+  display: 'flex',
 })
 
-const RightTopBorder = styled.div({
-  position: 'absolute',
-  width: '60%',
-  height: 4,
-  right: 0,
-  top: 0,
+const LeftTopBorder = styled.div({
   borderTop: '1px solid gray',
-  borderTopRightRadius: 4
+  borderTopLeftRadius: 4,
+  flexShrink: 0,
+  width: 14 - 4,
+  height: 4
+})
+
+const Label = styled.div({
+  opacity: 0,
+  overflow: 'hidden',
+  pointerEvents: 'none',
+  transition: 'max-width .1s cubic-bezier(0.4, 0.0, 0.2, 1)',
+  fontSize: 'calc(15px * 0.75)' // Should be configurable
+}, ({ elevated, label }) => !elevated
+  ? { maxWidth: 0 }
+  : { maxWidth: `${label.length}ex`, padding: '0 4px' }
+)
+
+const RightTopBorder = styled.div({
+  borderTop: '1px solid gray',
+  borderTopRightRadius: 4,
+  flexGrow: 1,
+  height: 4
 })
 
 const MainBorder = styled.div({

@@ -24,7 +24,7 @@ const App = () => {
 
 const label = 'Label'
 const helperText = 'Helper text'
-const placeholder = 'Placeholder that is much longer that the label'
+const placeholder = 'Label'
 const multiline = true
 
 const types = {
@@ -36,8 +36,8 @@ const types = {
     placeholder
   },
   helperText: {
-    label,
-    placeholder,
+    label: 'Different label',
+    placeholder: 'Placeholder that is much longer that the label',
     helperText
   },
   multiline: {
@@ -55,8 +55,10 @@ const variants = {
 }
 
 const Container = styled.div({
+  margin: 16,
   fontSize: '15px',
-  lineHeight: '24px'
+  lineHeight: '24px',
+  letterSpacing: 1
 })
 
 const VariantContainer = styled.div({
