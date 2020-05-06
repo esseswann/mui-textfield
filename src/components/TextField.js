@@ -1,6 +1,8 @@
 import { createElement as $ } from 'react'
 import InputBase from './InputBase'
+import UnderlineInput from './UnderlineInput'
 import OutlinedInput from './OutlinedInput'
+import FilledInput from './FilledInput'
 import InputLabel from './InputLabel'
 
 const TextField = ({
@@ -14,13 +16,14 @@ const TextField = ({
 }) => {
 
   return $('div', null,
-    $(variants[variant] || Underline, {
+    $(variants[variant] || UnderlineInput, {
       label,
       elevated: !!value
     },
       label &&
         $(InputLabel, {
           label,
+          variant,
           elevated: !!value
         }),
       $(InputBase, {
@@ -35,16 +38,14 @@ const TextField = ({
 
 const Filled =({ children }) =>
   $('div', null, children)
-const Underline = ({ children }) =>
-  $('div', null, children)
 
 const variants = {
   outlined: OutlinedInput,
-  filled: Filled,
-  underline: Underline
+  filled: FilledInput,
+  underline: UnderlineInput
 }
 
 const HelperText = () =>
-  $('div', null, 'helper text')
+  $('small', null, 'helper text')
 
 export default TextField

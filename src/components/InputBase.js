@@ -5,7 +5,7 @@ const InputBase = ({
   value,
   onChange,
   multiline,
-  placeholder,
+  placeholder
 }) =>
   multiline
     ? $(Textarea, { onChange, placeholder, value, rows: 5 })
@@ -20,6 +20,7 @@ const font = {
 
 const common = {
   display: 'block',
+  background: 'transparent',
   margin: 0,
   padding: 0,
   border: 'none',
