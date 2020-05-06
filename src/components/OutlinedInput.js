@@ -1,5 +1,6 @@
 import { createElement as $ } from 'react'
 import styled from '@emotion/styled/macro'
+import InputContainer from './InputContainer'
 
 const OutlinedInput = ({
   label,
@@ -14,14 +15,9 @@ const OutlinedInput = ({
         $(LeftTopBorder),
         $(Label, { elevated, label }, label),
         $(RightTopBorder)),
-    $(MainBorder, { label, focused }),
-    children)
+    $(MainBorder, { label, focused }))
 
-const Container = styled.div({
-  position: 'relative',
-  minWidth: 200,
-  boxSizing: 'border-box',
-}, ({ dense }) => ({
+const Container = styled(InputContainer)(({ dense }) => ({
   padding: dense
     ? '8px 14px'
     : '16px 14px'

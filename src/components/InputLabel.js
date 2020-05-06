@@ -31,7 +31,7 @@ const Container = styled.label({
 
 const variants = {
   outlined: 26,
-  filled: 8,
+  filled: 10,
   underline: 16
 }
 
