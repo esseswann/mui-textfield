@@ -40,7 +40,7 @@ const variants = {
 }
 
 const denseVariants = {
-  outlined: 18,
+  outlined: 16,
   filled: 8,
   underline: 16
 }
