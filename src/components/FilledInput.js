@@ -33,8 +33,12 @@ const ValueArea = styled.div(({ Label, dense }) => ({
   flexWrap: 'wrap',
   flexGrow: 1,
   padding: Label
-    ? '24px 0 8px'
-    : '16px 0'
+    ? dense
+      ? '20px 0 4px'
+      : '24px 0 8px'
+    : dense
+      ? '12px 0'
+      : '16px 0'
 }))
 
 export default FilledInput
