@@ -22,9 +22,9 @@ const UnderlineInput = ({
     $(Underline, { focused }))
 
 const Container = styled(InputContainer)(({ dense }) => ({
-  paddingTop: dense
-    ? 16
-    : 24
+  padding: dense
+    ? '14px 0 2px'
+    : '22px 0 2px'
 }))
 
 const ValueArea = styled.div({

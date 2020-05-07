@@ -25,7 +25,6 @@ const Container = styled(InputContainer)({
   borderTopLeftRadius: 4,
   borderTopRightRadius: 4,
   background: 'rgba(0,0,0,.05)',
-  padding: '0 14px',
   alignItems: 'center'
 })
 

@@ -27,7 +27,7 @@ const Container = styled.label({
     left: variant === 'underline'
       ? 0
       : variant === 'outlined'
-        ? 14
+        ? 16
         : null,
     transform: `translate(0, -${(dense ? denseVariants : variants)[variant]}px) scale(0.75)`
   }

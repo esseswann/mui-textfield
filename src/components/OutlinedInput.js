@@ -28,7 +28,6 @@ const OutlinedInput = ({
     EndAdornment)
 
 const Container = styled(InputContainer)({
-  padding: '0 14px',
   alignItems: 'center'
 })
 
@@ -57,7 +56,7 @@ const TopBorder = styled.div({
 const LeftTopBorder = styled.div({
   borderTopLeftRadius: 4,
   flexShrink: 0,
-  width: 14 - 4,
+  width: 16 - 4,
   height: 4
 })
 
