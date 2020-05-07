@@ -98,6 +98,7 @@ const Container = styled.div({
   padding: 16,
   fontSize: '15px',
   lineHeight: '24px',
+  fontFamily: 'Roboto',
   letterSpacing: 1
 })
 
