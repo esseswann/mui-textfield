@@ -1,4 +1,4 @@
-import { createElement as $, useState, Fragment } from 'react'
+import { createElement as $, useState } from 'react'
 import TextField from './components/TextField'
 import { Chip } from './components/Chip'
 import styled from '@emotion/styled/macro'
@@ -73,13 +73,13 @@ const types = {
   multiSelectSingle: {
     label: 'Different label',
     placeholder: 'Placeholder',
-    renderValue: $(Fragment, null, $(Chip, { key: chips[0] }, chips[0])),
+    renderValue: $(Chip, { key: chips[0] }, chips[0]),
     endAdornment: $('div', null, 'kg'),
   },
   multiSelect: {
     label: 'Different label',
     placeholder: 'Placeholder',
-    renderValue: $(Fragment, null, map(chip => $(Chip, { key: chip }, chip), chips)),
+    renderValue: map(chip => $(Chip, { key: chip }, chip), chips),
     endAdornment: $('div', null, '▼'),
   },
   multiline: {
