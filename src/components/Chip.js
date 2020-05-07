@@ -6,10 +6,16 @@ export const Chip = styled.div({
   padding: '4px 12px',
   color: 'gray',
   background: 'rgba(0,0,0,.1)',
-  margin: 2,
+  margin: 4,
   marginLeft: 0,
-  whiteSpace: 'nowrap'
-})
+  whiteSpace: 'nowrap',
+  '&:last-of-type': {
+    marginRight: 8
+  }
+}, ({ dense }) => ({
+  padding: '0 12px',
+  margin: 2
+}))
 
 export const Chips = styled.div({
   display: 'flex',

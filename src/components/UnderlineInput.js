@@ -15,8 +15,8 @@ const UnderlineInput = ({
   $(Container, { dense },
     StartAdornment,
     $(ValueArea, null,
-      RenderValue,
       Label,
+      RenderValue,
       Input),
     EndAdornment,
     $(Underline, { focused }))

@@ -32,6 +32,8 @@ const App = () => {
               dense: true,
               onChange: event => setValue(event.target.value),
               variant,
+              renderValue: (type === 'multiSelect' || type === 'multiSelectSingle') &&
+                map(chip => $(Chip, { key: chip, dense: true }, chip), chips),
               ...params})),
           entries(types))),
       entries(variants)))

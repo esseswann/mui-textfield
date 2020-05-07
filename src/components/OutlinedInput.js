@@ -22,8 +22,8 @@ const OutlinedInput = ({
     $(MainBorder, { label, focused }),
     StartAdornment,
     $(ValueArea, { dense },
-      RenderValue,
       Label,
+      RenderValue,
       Input),
     EndAdornment)
 

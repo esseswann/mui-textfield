@@ -15,8 +15,8 @@ const FilledInput = ({
   $(Container, null,
     StartAdornment,
     $(ValueArea, { Label, dense },
-      RenderValue,
       Label,
+      RenderValue,
       Input),
     EndAdornment,
     $(Underline, { focused }))

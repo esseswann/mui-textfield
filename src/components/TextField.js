@@ -21,7 +21,7 @@ const TextField = ({
 }) => {
   
   const [focused, setFocused] = useState(false)
-  const elevated = renderValue || focused || !!value
+  const elevated = !label || renderValue || focused || !!value
   
   return $('div', null,
     $(variants[variant] || UnderlineInput, {
@@ -52,6 +52,7 @@ const TextField = ({
           onChange,
           focused,
           label,
+          elevated,
           onFocus: () => setFocused(true),
           onBlur: () => setFocused(false)
         })

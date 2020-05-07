@@ -20,8 +20,8 @@ const common = {
   margin: 0,
   padding: 0,
   border: 'none',
-  minWidth: 80,
-  // flexShrink: 0,
+  minWidth: 60,
+  flexBasis: 60,
   flexGrow: 1,
   caretColor: 'blue',
   ...font,
@@ -35,9 +35,8 @@ const common = {
 }
 
 const focused = ({
-  focused,
-  label
-}) => label && !focused && {
+  elevated
+}) => !elevated && {
   '&::placeholder': {
     opacity: 0
   }
