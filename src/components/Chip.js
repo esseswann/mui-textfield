@@ -14,7 +14,8 @@ export const Chip = styled.div({
   }
 }, ({ dense }) => dense && {
   padding: '0 12px',
-  margin: 2
+  margin: 2,
+  marginLeft: 0
 })
 
 export const Chips = styled.div({

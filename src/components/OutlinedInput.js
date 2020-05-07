@@ -22,7 +22,7 @@ const OutlinedInput = ({
         $(RightTopBorder)),
     $(MainBorder, { label, focused }),
     StartAdornment,
-    $(OutlinedValueArea, { dense },
+    $(OutlinedValueArea, { dense, RenderValue  },
       Label,
       RenderValue,
       Input),
@@ -32,11 +32,19 @@ const Container = styled(InputContainer)({
   alignItems: 'center'
 })
 
-const OutlinedValueArea = styled(ValueArea)(({ dense }) => ({
-  padding: dense
-    ? '8px 0'
-    : '16px 0'
-}))
+const OutlinedValueArea = styled(ValueArea)(({ dense, RenderValue }) => {
+  const padding = dense
+    ? RenderValue
+      ? 4
+      : 6
+    : RenderValue
+      ? 8
+      : 16
+  return {
+    paddingTop: padding,
+    paddingBottom: padding,
+  }
+})
 
 const TopBorder = styled.div({
   position: 'absolute',

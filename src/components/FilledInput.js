@@ -15,7 +15,7 @@ const FilledInput = ({
 }) =>
   $(Container, null,
     StartAdornment,
-    $(FilledValueArea, { Label, dense },
+    $(FilledValueArea, { Label, dense, RenderValue },
       Label,
       RenderValue,
       Input),
@@ -29,14 +29,17 @@ const Container = styled(InputContainer)({
   alignItems: 'center'
 })
 
-const FilledValueArea = styled(ValueArea)(({ Label, dense }) => ({
-  padding: Label
-    ? dense
-      ? '20px 0 4px'
-      : '24px 0 8px'
+const FilledValueArea = styled(ValueArea)(({ Label, dense, RenderValue }) => {
+  const densePadding = dense ? 4 : 0
+  const valuePadding = !RenderValue
+    ? 0
     : dense
-      ? '12px 0'
-      : '16px 0'
-}))
+      ? 2
+      : 8
+  return {
+    paddingTop: (!Label ? 16 : 24) - densePadding - valuePadding,
+    paddingBottom: (!Label ? 16 : 8) - densePadding - valuePadding
+  }
+})
 
 export default FilledInput

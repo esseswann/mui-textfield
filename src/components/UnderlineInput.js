@@ -13,25 +13,28 @@ const UnderlineInput = ({
   Input,
   RenderValue,
 }) =>
-  $(Container, { dense },
+  $(Container, null,
     StartAdornment,
-    $(UnderlineValueArea, null,
+    $(UnderlineValueArea, { dense, RenderValue },
       Label,
       RenderValue,
       Input),
     EndAdornment,
     $(Underline, { focused }))
 
-const Container = styled(InputContainer)(({ dense }) => ({
-  padding: dense
-    ? '14px 0 2px'
-    : '22px 0 2px'
-}))
+const Container = styled(InputContainer)({
+  padding: 0,
+  alignItems: 'flex-end'
+})
 
-const UnderlineValueArea = styled(ValueArea)({
-  display: 'flex',
-  flexWrap: 'wrap',
-  flexGrow: 1,
+const UnderlineValueArea = styled(ValueArea)(({ dense, RenderValue }) => {
+  const topPadding = dense ? 16 : 24
+  const bottomPadding = 0
+  const valuePadding = RenderValue ? 4 : 0
+  return {
+    paddingTop: topPadding - valuePadding,
+    paddingBottom: bottomPadding - valuePadding,
+  }
 })
 
 export default UnderlineInput
