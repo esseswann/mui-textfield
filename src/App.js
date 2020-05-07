@@ -1,9 +1,8 @@
 import { createElement as $, useState, Fragment } from 'react'
 import TextField from './components/TextField'
-import { Chip, Chips } from './components/Chip'
+import { Chip } from './components/Chip'
 import styled from '@emotion/styled/macro'
 import map from 'lodash/fp/map'
-import range from 'lodash/fp/range'
 import entries from 'lodash/fp/entries'
 
 const App = () => {
@@ -42,6 +41,13 @@ const label = 'Label'
 const helperText = 'Helper text'
 const placeholder = 'Label'
 const multiline = true
+const chips = [
+  'Toy Story',
+  'A Bugs Life',
+  'Toy Story 2',
+  'Monsters, Inc.',
+  'Finding Nemo',
+]
 
 const types = {
   value: {
@@ -62,11 +68,17 @@ const types = {
     startAdornment: $('div', null, 'kg'),
     endAdornment: $('div', null, 'kg')
   },
+  multiSelectSingle: {
+    label: 'Different label',
+    placeholder: 'Placeholder',
+    renderValue: $(Fragment, null, $(Chip, { key: chips[0] }, chips[0])),
+    endAdornment: $('div', null, 'kg'),
+  },
   multiSelect: {
     label: 'Different label',
-    placeholder: 'Placeholder that is much longer that the label',
-    renderValue: $(Fragment, null, map(() => $(Chip, null, 'test'), range(0, 10))),
-    endAdornment: $('div', null, 'kg'),
+    placeholder: 'Placeholder',
+    renderValue: $(Fragment, null, map(chip => $(Chip, { key: chip }, chip), chips)),
+    endAdornment: $('div', null, '▼'),
   },
   multiline: {
     label,
@@ -96,6 +108,7 @@ const VariantContainer = styled.div({
 
 const TextFieldContainer = styled.div({
   margin: 8,
+  flexShrink: 0,
   maxWidth: 300
 })
 

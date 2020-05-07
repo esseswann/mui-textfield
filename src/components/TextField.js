@@ -33,10 +33,10 @@ const TextField = ({
       StartAdornment: startAdornment &&
         $(StartAdornmentHolder, null, 
           startAdornment),
-      EndAdornment: startAdornment &&
+      EndAdornment: endAdornment &&
         $(EndAdornmentHolder, null, 
-          startAdornment),
-      Label:
+          endAdornment),
+      Label: label &&
         $(InputLabel, {
           label,
           dense,

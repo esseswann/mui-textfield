@@ -14,8 +14,8 @@ const UnderlineInput = ({
 }) =>
   $(Container, { dense },
     StartAdornment,
-    RenderValue,
     $(ValueArea, null,
+      RenderValue,
       Label,
       Input),
     EndAdornment,
@@ -28,6 +28,8 @@ const Container = styled(InputContainer)(({ dense }) => ({
 }))
 
 const ValueArea = styled.div({
+  display: 'flex',
+  flexWrap: 'wrap',
   flexGrow: 1,
 })
 

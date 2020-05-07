@@ -10,10 +10,12 @@ const FilledInput = ({
   EndAdornment,
   Label,
   Input,
+  RenderValue
 }) =>
   $(Container, null,
     StartAdornment,
     $(ValueArea, { Label, dense },
+      RenderValue,
       Label,
       Input),
     EndAdornment,
@@ -28,6 +30,8 @@ const Container = styled(InputContainer)({
 })
 
 const ValueArea = styled.div(({ Label, dense }) => ({
+  display: 'flex',
+  flexWrap: 'wrap',
   flexGrow: 1,
   padding: Label
     ? '24px 0 8px'

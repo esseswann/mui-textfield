@@ -6,7 +6,9 @@ export const Chip = styled.div({
   padding: '4px 12px',
   color: 'gray',
   background: 'rgba(0,0,0,.1)',
-  margin: 2
+  margin: 2,
+  marginLeft: 0,
+  whiteSpace: 'nowrap'
 })
 
 export const Chips = styled.div({

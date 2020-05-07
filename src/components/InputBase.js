@@ -20,8 +20,9 @@ const common = {
   margin: 0,
   padding: 0,
   border: 'none',
-  minWidth: 140,
-  flexShrink: 0,
+  minWidth: 80,
+  // flexShrink: 0,
+  flexGrow: 1,
   caretColor: 'blue',
   ...font,
   '&:focus': {
