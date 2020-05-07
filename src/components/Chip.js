@@ -12,10 +12,10 @@ export const Chip = styled.div({
   '&:last-of-type': {
     marginRight: 8
   }
-}, ({ dense }) => ({
+}, ({ dense }) => dense && {
   padding: '0 12px',
   margin: 2
-}))
+})
 
 export const Chips = styled.div({
   display: 'flex',
