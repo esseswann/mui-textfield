@@ -2,6 +2,7 @@ import { createElement as $ } from 'react'
 import styled from '@emotion/styled/macro'
 import InputContainer from './InputContainer'
 import Underline from './Underline'
+import ValueArea from './ValueArea'
 
 const UnderlineInput = ({
   focused,
@@ -14,7 +15,7 @@ const UnderlineInput = ({
 }) =>
   $(Container, { dense },
     StartAdornment,
-    $(ValueArea, null,
+    $(UnderlineValueArea, null,
       Label,
       RenderValue,
       Input),
@@ -27,7 +28,7 @@ const Container = styled(InputContainer)(({ dense }) => ({
     : '22px 0 2px'
 }))
 
-const ValueArea = styled.div({
+const UnderlineValueArea = styled(ValueArea)({
   display: 'flex',
   flexWrap: 'wrap',
   flexGrow: 1,

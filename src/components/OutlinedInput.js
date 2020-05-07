@@ -1,6 +1,7 @@
 import { createElement as $ } from 'react'
 import styled from '@emotion/styled/macro'
 import InputContainer from './InputContainer'
+import ValueArea from './ValueArea'
 
 const OutlinedInput = ({
   label,
@@ -21,7 +22,7 @@ const OutlinedInput = ({
         $(RightTopBorder)),
     $(MainBorder, { label, focused }),
     StartAdornment,
-    $(ValueArea, { dense },
+    $(OutlinedValueArea, { dense },
       Label,
       RenderValue,
       Input),
@@ -31,10 +32,7 @@ const Container = styled(InputContainer)({
   alignItems: 'center'
 })
 
-const ValueArea = styled.div(({ dense }) => ({
-  flexGrow: 1,
-  display: 'flex',
-  flexWrap: 'wrap',
+const OutlinedValueArea = styled(ValueArea)(({ dense }) => ({
   padding: dense
     ? '8px 0'
     : '16px 0'
