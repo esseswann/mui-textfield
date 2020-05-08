@@ -30,12 +30,8 @@ const TextField = ({
       elevated,
       dense,
       RenderValue: renderValue,
-      StartAdornment: startAdornment &&
-        $(StartAdornmentHolder, null, 
-          startAdornment),
-      EndAdornment: endAdornment &&
-        $(EndAdornmentHolder, null, 
-          endAdornment),
+      startAdornment,
+      endAdornment,
       Label: label &&
         $(InputLabel, {
           label,
