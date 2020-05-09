@@ -4,6 +4,7 @@ import InputContainer from './InputContainer'
 import Underline from './Underline'
 import InputLabel from './InputLabel'
 import InputBase from './InputBase'
+import AdornmentHolder from './AdornmentHolder'
 
 const FilledInput = ({
   focused,
@@ -74,13 +75,5 @@ const ValueHolder = styled.div({
       paddingBottom: dense ? 3 : 8,
     }
 }))
-
-const AdornmentHolder = styled.div({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexShrink: 0,
-  width: 48
-})
 
 export default FilledInput

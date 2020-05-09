@@ -3,6 +3,7 @@ import styled from '@emotion/styled/macro'
 import InputContainer from './InputContainer'
 import InputLabel from './InputLabel'
 import InputBase from './InputBase'
+import AdornmentHolder from './AdornmentHolder'
 
 const OutlinedInput = ({
   focused,
@@ -118,13 +119,5 @@ const MainBorder = styled.div({
     borderTop: 0
   }
 }))
-
-const AdornmentHolder = styled.div({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexSrhink: 0,
-  minWidth: 48
-})
 
 export default OutlinedInput

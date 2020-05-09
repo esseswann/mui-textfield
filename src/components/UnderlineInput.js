@@ -2,39 +2,75 @@ import { createElement as $ } from 'react'
 import styled from '@emotion/styled/macro'
 import InputContainer from './InputContainer'
 import Underline from './Underline'
-import ValueArea from './ValueArea'
+import InputLabel from './InputLabel'
+import InputBase from './InputBase'
+import AdornmentHolder from './AdornmentHolder'
 
-const UnderlineInput = ({
+const FilledInput = ({
   focused,
   dense,
-  StartAdornment,
-  EndAdornment,
-  Label,
-  Input,
-  RenderValue,
+  label,
+  multiline,
+  elevated,
+  startAdornment,
+  endAdornment,
+  value,
+  placeholder,
+  onChange,
+  onFocus,
+  onBlur,
+  renderValue
 }) =>
-  $(Container, null,
-    StartAdornment,
-    $(UnderlineValueArea, { dense, RenderValue },
-      Label,
-      RenderValue,
-      Input),
-    EndAdornment,
+  $(Container, { dense, startAdornment },
+    label &&
+      $(InputLabel, {
+        children: label,
+        elevated,
+        focused,
+        relaxedLeft: startAdornment
+          ? '48px'
+          : '0px',
+        elevatedLeft: '0px',
+        relaxedTop: '24px',
+        elevatedTop: '4px',
+      }),
+    startAdornment &&
+      $(StartAdornmentHolder, null, startAdornment),
+      $(ValueHolder, { label, dense, startAdornment }, 
+        renderValue,
+        $(InputBase, { placeholder, elevated, multiline, onFocus, onBlur, onChange, value })),
+    endAdornment &&
+      $(AdornmentHolder, null, endAdornment),
     $(Underline, { focused }))
 
+const StartAdornmentHolder = styled(AdornmentHolder)({
+  minWidth: 0
+})
+
 const Container = styled(InputContainer)({
-  padding: 0,
-  alignItems: 'flex-end'
+  borderTopLeftRadius: 4,
+  borderTopRightRadius: 4,
+}, ({ dense }) => dense
+  ? containerDenseStyle
+  : containerFullStyle
+)
+
+const containerDenseStyle = {
+  paddingTop: 24,
+  // paddingBottom: 3,
+  minHeight: 40
+}
+
+const containerFullStyle = {
+  paddingTop: 24,
+  // paddingBottom: 4,
+  minHeight: 48
+}
+
+const ValueHolder = styled.div({
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
 })
 
-const UnderlineValueArea = styled(ValueArea)(({ dense, RenderValue }) => {
-  const topPadding = dense ? 16 : 24
-  const bottomPadding = 0
-  const valuePadding = RenderValue ? 4 : 0
-  return {
-    paddingTop: topPadding - valuePadding,
-    paddingBottom: bottomPadding - valuePadding,
-  }
-})
-
-export default UnderlineInput
+export default FilledInput

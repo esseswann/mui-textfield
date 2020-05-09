@@ -1,10 +1,7 @@
 import { createElement as $, useState } from 'react'
-import InputBase from './InputBase'
 import UnderlineInput from './UnderlineInput'
 import OutlinedInput from './OutlinedInput'
 import FilledInput from './FilledInput'
-import InputLabel from './InputLabel'
-import styled from '@emotion/styled/macro'
 
 const TextField = ({
   label,
