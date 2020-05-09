@@ -26,6 +26,7 @@ const TextField = ({
   return $('div', null,
     $(variants[variant] || UnderlineInput, {
       label,
+      placeholder,
       focused,
       elevated,
       dense,
@@ -41,14 +42,6 @@ const TextField = ({
     helperText &&
       $(HelperText))
 }
-
-const StartAdornmentHolder = styled.div({
-  marginRight: 8
-})
-
-const EndAdornmentHolder = styled.div({
-  marginLeft: 8
-})
 
 const variants = {
   outlined: OutlinedInput,

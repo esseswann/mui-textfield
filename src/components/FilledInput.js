@@ -4,7 +4,6 @@ import InputContainer from './InputContainer'
 import Underline from './Underline'
 import InputLabel from './InputLabel'
 import InputBase from './InputBase'
-import ValueArea from './ValueArea'
 
 const FilledInput = ({
   focused,
@@ -14,10 +13,11 @@ const FilledInput = ({
   elevated,
   startAdornment,
   endAdornment,
+  value,
+  placeholder,
+  onChange,
   onFocus,
   onBlur,
-  value,
-  onChange,
   renderValue
 }) =>
   $(Container, { dense, startAdornment },
@@ -39,9 +39,9 @@ const FilledInput = ({
       }),
     startAdornment &&
       $(AdornmentHolder, null, startAdornment),
-      $(ValueHolder, { dense, startAdornment }, 
+      $(ValueHolder, { label, dense, startAdornment }, 
         renderValue,
-        $(InputBase, { multiline, onFocus, onBlur, onChange, value })),
+        $(InputBase, { placeholder, elevated, multiline, onFocus, onBlur, onChange, value })),
     endAdornment &&
       $(AdornmentHolder, null, endAdornment),
     $(Underline, { focused }))
@@ -62,18 +62,24 @@ const ValueHolder = styled.div({
   alignItems: 'center',
 }, ({
   startAdornment,
-  dense
+  dense,
+  label
 }) => ({
   paddingLeft: startAdornment ? 0 : 16,
-  paddingTop: dense ? 21 : 24,
-  paddingBottom: dense ? 3 : 8
+  ...!label
+    ? { paddingTop: 8,
+        paddingBottom: 8
+    } : {
+      paddingTop: dense ? 21 : 24,
+      paddingBottom: dense ? 3 : 8,
+    }
 }))
 
 const AdornmentHolder = styled.div({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  flexSrhink: 0,
+  flexShrink: 0,
   width: 48
 })
 

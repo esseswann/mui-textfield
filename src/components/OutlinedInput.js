@@ -1,50 +1,69 @@
 import { createElement as $ } from 'react'
 import styled from '@emotion/styled/macro'
 import InputContainer from './InputContainer'
-import ValueArea from './ValueArea'
+import InputLabel from './InputLabel'
+import InputBase from './InputBase'
 
 const OutlinedInput = ({
-  label,
-  elevated,
   focused,
   dense,
-  Input,
-  Label,
-  StartAdornment,
-  EndAdornment,
-  RenderValue
+  label,
+  multiline,
+  elevated,
+  startAdornment,
+  endAdornment,
+  onFocus,
+  onBlur,
+  value,
+  onChange,
+  renderValue,
+  placeholder
 }) =>
-  $(Container, { dense },
+  $(Container, { dense, startAdornment },
     label &&
-      $(TopBorder, { focused },
+      $(TopBorder, { focused }, 
         $(LeftTopBorder),
         $(InvisibleLabel, { elevated, label }, label),
         $(RightTopBorder)),
     $(MainBorder, { label, focused }),
-    StartAdornment,
-    $(OutlinedValueArea, { dense, RenderValue  },
-      Label,
-      RenderValue,
-      Input),
-    EndAdornment)
+    label &&
+      $(InputLabel, {
+        children: label,
+        elevated,
+        focused,
+        relaxedLeft: startAdornment
+          ? '48px'
+          : '16px',
+        elevatedLeft: '16px',
+        relaxedTop: dense ? '8px' : '16px',
+        elevatedTop: '-12px',
+      }),
+    startAdornment &&
+      $(AdornmentHolder, null, startAdornment),
+      $(ValueHolder, { dense, startAdornment }, 
+        renderValue,
+        $(InputBase, { placeholder, elevated, multiline, onFocus, onBlur, onChange, value })),
+    endAdornment &&
+      $(AdornmentHolder, null, endAdornment))
 
 const Container = styled(InputContainer)({
-  alignItems: 'center'
-})
+  alignItems: 'center',
+}, ({ dense }) => ({
+  minHeight: dense ? 40 : 56
+}))
 
-const OutlinedValueArea = styled(ValueArea)(({ dense, RenderValue }) => {
-  const padding = dense
-    ? RenderValue
-      ? 4
-      : 6
-    : RenderValue
-      ? 8
-      : 16
-  return {
-    paddingTop: padding,
-    paddingBottom: padding,
-  }
-})
+const ValueHolder = styled.div({
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+}, ({
+  startAdornment,
+  dense
+}) => ({
+  paddingLeft: startAdornment ? 0 : 16,
+  paddingTop: dense ? 4 : 8,
+  paddingBottom: dense ? 4 : 8
+}))
 
 const TopBorder = styled.div({
   position: 'absolute',
@@ -99,5 +118,13 @@ const MainBorder = styled.div({
     borderTop: 0
   }
 }))
+
+const AdornmentHolder = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexSrhink: 0,
+  minWidth: 48
+})
 
 export default OutlinedInput

@@ -34,7 +34,7 @@ const common = {
   }
 }
 
-const focused = ({
+const elevatedStyles = ({
   elevated
 }) => !elevated && {
   '&::placeholder': {
@@ -42,7 +42,7 @@ const focused = ({
   }
 }
 
-const Input = styled.input(common, focused)
+const Input = styled.input(common, elevatedStyles)
 
 const Textarea = styled.textarea({
   height: 'auto',
@@ -52,6 +52,6 @@ const Textarea = styled.textarea({
   //   height: 0
   // },
   ...common
-}, focused)
+}, elevatedStyles)
 
 export default InputBase
