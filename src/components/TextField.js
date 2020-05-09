@@ -29,29 +29,14 @@ const TextField = ({
       focused,
       elevated,
       dense,
-      RenderValue: renderValue,
+      onChange,
+      value,
+      onFocus: () => setFocused(true),
+      onBlur: () => setFocused(false),
+      renderValue,
       startAdornment,
       endAdornment,
-      Label: label &&
-        $(InputLabel, {
-          label,
-          dense,
-          variant,
-          elevated,
-          focused
-        }),
-      Input:
-        $(InputBase, {
-          multiline,
-          placeholder,
-          value,
-          onChange,
-          focused,
-          label,
-          elevated,
-          onFocus: () => setFocused(true),
-          onBlur: () => setFocused(false)
-        })
+      multiline
     }),
     helperText &&
       $(HelperText))

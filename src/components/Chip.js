@@ -6,15 +6,17 @@ export const Chip = styled.div({
   padding: '4px 12px',
   color: 'gray',
   background: 'rgba(0,0,0,.1)',
-  margin: 4,
-  marginLeft: 0,
+  // marginTop: 4,
+  marginRight: 4,
+  // marginLeft: 0,
   whiteSpace: 'nowrap',
   '&:last-of-type': {
     marginRight: 8
   }
 }, ({ dense }) => dense && {
   padding: '0 12px',
-  margin: 2,
+  // marginTop: 4,
+  marginRight: 2,
   marginLeft: 0
 })
 

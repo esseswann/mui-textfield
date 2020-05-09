@@ -3,20 +3,24 @@ import styled from '@emotion/styled/macro'
 import InputContainer from './InputContainer'
 import Underline from './Underline'
 import InputLabel from './InputLabel'
+import InputBase from './InputBase'
 import ValueArea from './ValueArea'
 
 const FilledInput = ({
   focused,
   dense,
   label,
+  multiline,
   elevated,
   startAdornment,
   endAdornment,
-  Label,
-  Input,
-  RenderValue
+  onFocus,
+  onBlur,
+  value,
+  onChange,
+  renderValue
 }) =>
-  $(Container, { dense },
+  $(Container, { dense, startAdornment },
     label &&
       $(InputLabel, {
         children: label,
@@ -25,7 +29,7 @@ const FilledInput = ({
         relaxedLeft: startAdornment
           ? '48px'
           : '16px',
-        elevatedLeft: endAdornment
+        elevatedLeft: startAdornment
           ? '48px'
           : '16px',
         relaxedTop: dense 
@@ -35,8 +39,9 @@ const FilledInput = ({
       }),
     startAdornment &&
       $(AdornmentHolder, null, startAdornment),
-    // RenderValue,
-    Input,
+      $(ValueHolder, { dense, startAdornment }, 
+        renderValue,
+        $(InputBase, { multiline, onFocus, onBlur, onChange, value })),
     endAdornment &&
       $(AdornmentHolder, null, endAdornment),
     $(Underline, { focused }))
@@ -45,14 +50,23 @@ const Container = styled(InputContainer)({
   borderTopLeftRadius: 4,
   borderTopRightRadius: 4,
   background: 'rgba(0,0,0,.05)',
-  alignItems: 'center'
 }, ({ dense }) => ({
-  // padding: dense
-  //   ? '16px 0 0px'
-  //   : '24px 0 8px',
   minHeight: dense
     ? 48
     : 56
+}))
+
+const ValueHolder = styled.div({
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+}, ({
+  startAdornment,
+  dense
+}) => ({
+  paddingLeft: startAdornment ? 0 : 16,
+  paddingTop: dense ? 21 : 24,
+  paddingBottom: dense ? 3 : 8
 }))
 
 const AdornmentHolder = styled.div({
@@ -62,18 +76,5 @@ const AdornmentHolder = styled.div({
   flexSrhink: 0,
   width: 48
 })
-
-// const FilledValueArea = styled(ValueArea)(({ Label, dense, RenderValue }) => {
-//   const densePadding = dense ? 4 : 0
-//   const valuePadding = !RenderValue
-//     ? 0
-//     : dense
-//       ? 2
-//       : 8
-//   return {
-//     paddingTop: (!Label ? 16 : 24) - densePadding - valuePadding,
-//     paddingBottom: (!Label ? 16 : 8) - densePadding - valuePadding
-//   }
-// })
 
 export default FilledInput
