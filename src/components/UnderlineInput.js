@@ -28,7 +28,7 @@ const FilledInput = ({
         elevated,
         focused,
         relaxedLeft: startAdornment
-          ? '48px'
+          ? '32px'
           : '0px',
         elevatedLeft: '0px',
         relaxedTop: '24px',
@@ -40,11 +40,17 @@ const FilledInput = ({
         renderValue,
         $(InputBase, { placeholder, elevated, multiline, onFocus, onBlur, onChange, value })),
     endAdornment &&
-      $(AdornmentHolder, null, endAdornment),
+      $(EndAdornmentHolder, null, endAdornment),
     $(Underline, { focused }))
 
 const StartAdornmentHolder = styled(AdornmentHolder)({
-  minWidth: 0
+  justifyContent: 'start',
+  minWidth: 32,
+})
+
+const EndAdornmentHolder = styled(AdornmentHolder)({
+  minWidth: 32,
+  justifyContent: 'flex-end',
 })
 
 const Container = styled(InputContainer)({
