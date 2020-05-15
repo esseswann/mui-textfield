@@ -65,9 +65,7 @@ const ValueHolder = styled.div({
   padding: `${dense
     ? renderValue ? 7 : 8
     : renderValue ? 10 : 16}px 0`,
-  paddingLeft: startAdornment ? 0 : 16,
-  // paddingTop: dense ? 8 : 16,
-  // paddingBottom: dense ? 8 : 16
+  paddingLeft: startAdornment ? 0 : 16
 }))
 
 const TopBorder = styled.div({

@@ -67,14 +67,17 @@ const ValueHolder = styled.div({
   label,
   renderValue
 }) => ({
-  paddingLeft: startAdornment ? 0 : 16,
   ...!label
-    ? { paddingTop: 8,
-        paddingBottom: 8
-    } : {
-      paddingTop: dense ? 21 : 24,
-      paddingBottom: dense ? 3 : 8,
-    }
+    ? { padding: '8px 0' }
+    : {
+      paddingTop: dense
+        ? renderValue ? 20 : 21
+        : renderValue ? 22 : 24,
+      paddingBottom: dense
+        ? renderValue ? 2 : 3
+        : renderValue ? 6 : 8,
+    },
+  paddingLeft: startAdornment ? 0 : 16,
 }))
 
 export default FilledInput
