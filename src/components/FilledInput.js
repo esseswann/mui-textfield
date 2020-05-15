@@ -40,7 +40,7 @@ const FilledInput = ({
       }),
     startAdornment &&
       $(AdornmentHolder, null, startAdornment),
-      $(ValueHolder, { label, dense, startAdornment }, 
+      $(ValueHolder, { label, dense, startAdornment, renderValue }, 
         renderValue,
         $(InputBase, { placeholder, elevated, multiline, onFocus, onBlur, onChange, value })),
     endAdornment &&
@@ -64,7 +64,8 @@ const ValueHolder = styled.div({
 }, ({
   startAdornment,
   dense,
-  label
+  label,
+  renderValue
 }) => ({
   paddingLeft: startAdornment ? 0 : 16,
   ...!label

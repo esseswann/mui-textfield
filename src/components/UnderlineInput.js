@@ -63,13 +63,11 @@ const Container = styled(InputContainer)({
 
 const containerDenseStyle = {
   paddingTop: 24,
-  // paddingBottom: 3,
   minHeight: 40
 }
 
 const containerFullStyle = {
   paddingTop: 24,
-  // paddingBottom: 4,
   minHeight: 48
 }
 
@@ -77,6 +75,7 @@ const ValueHolder = styled.div({
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'center',
+  flexGrow: 1
 })
 
 export default FilledInput

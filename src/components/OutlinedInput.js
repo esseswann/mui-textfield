@@ -41,7 +41,7 @@ const OutlinedInput = ({
       }),
     startAdornment &&
       $(AdornmentHolder, null, startAdornment),
-      $(ValueHolder, { dense, startAdornment }, 
+      $(ValueHolder, { dense, startAdornment, renderValue }, 
         renderValue,
         $(InputBase, { placeholder, elevated, multiline, onFocus, onBlur, onChange, value })),
     endAdornment &&
@@ -59,11 +59,15 @@ const ValueHolder = styled.div({
   alignItems: 'center',
 }, ({
   startAdornment,
-  dense
+  dense,
+  renderValue
 }) => ({
+  padding: `${dense
+    ? renderValue ? 7 : 8
+    : renderValue ? 10 : 16}px 0`,
   paddingLeft: startAdornment ? 0 : 16,
-  paddingTop: dense ? 4 : 8,
-  paddingBottom: dense ? 4 : 8
+  // paddingTop: dense ? 8 : 16,
+  // paddingBottom: dense ? 8 : 16
 }))
 
 const TopBorder = styled.div({
