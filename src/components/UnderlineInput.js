@@ -5,6 +5,7 @@ import Underline from './Underline'
 import InputLabel from './InputLabel'
 import InputBase from './InputBase'
 import AdornmentHolder from './AdornmentHolder'
+import ValueHolder from './ValueHolder'
 
 const FilledInput = ({
   focused,
@@ -36,7 +37,7 @@ const FilledInput = ({
       }),
     startAdornment &&
       $(StartAdornmentHolder, null, startAdornment),
-      $(ValueHolder, { label, dense, startAdornment }, 
+      $(UnderlineValueHolder, { label, dense, startAdornment }, 
         renderValue,
         $(InputBase, { placeholder, elevated, multiline, onFocus, onBlur, onChange, value })),
     endAdornment &&
@@ -64,10 +65,7 @@ const Container = styled(InputContainer)({
   }
 )
 
-const ValueHolder = styled.div({
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'center',
+const UnderlineValueHolder = styled(ValueHolder)({
   flexGrow: 1
 })
 

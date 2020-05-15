@@ -4,6 +4,7 @@ import InputContainer from './InputContainer'
 import InputLabel from './InputLabel'
 import InputBase from './InputBase'
 import AdornmentHolder from './AdornmentHolder'
+import ValueHolder from './ValueHolder'
 
 const OutlinedInput = ({
   focused,
@@ -41,7 +42,7 @@ const OutlinedInput = ({
       }),
     startAdornment &&
       $(AdornmentHolder, null, startAdornment),
-      $(ValueHolder, { dense, startAdornment, renderValue }, 
+      $(OutlinedValueHolder, { dense, startAdornment, renderValue }, 
         renderValue,
         $(InputBase, { placeholder, elevated, multiline, onFocus, onBlur, onChange, value })),
     endAdornment &&
@@ -53,11 +54,7 @@ const Container = styled(InputContainer)({
   minHeight: dense ? 40 : 56
 }))
 
-const ValueHolder = styled.div({
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'center',
-}, ({
+const OutlinedValueHolder = styled(ValueHolder)(({
   startAdornment,
   dense,
   renderValue
