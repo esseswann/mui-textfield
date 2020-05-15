@@ -113,7 +113,10 @@ const VariantContainer = styled.div({
 const TextFieldContainer = styled.div({
   margin: 8,
   flexShrink: 0,
-  maxWidth: 300
+  width: 300,
+  '&:last-child': {
+    paddingRight: 16
+  }
 })
 
 export default App
