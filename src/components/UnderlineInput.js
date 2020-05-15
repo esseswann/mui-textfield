@@ -21,7 +21,7 @@ const FilledInput = ({
   onBlur,
   renderValue
 }) =>
-  $(Container, { dense, startAdornment },
+  $(Container, { dense, startAdornment, renderValue },
     label &&
       $(InputLabel, {
         children: label,
@@ -54,22 +54,15 @@ const EndAdornmentHolder = styled(AdornmentHolder)({
 })
 
 const Container = styled(InputContainer)({
-  borderTopLeftRadius: 4,
-  borderTopRightRadius: 4,
-}, ({ dense }) => dense
-  ? containerDenseStyle
-  : containerFullStyle
+  paddingTop: 24,
+}, ({ dense, renderValue }) => dense
+  ? { minHeight: 40,
+      paddingBottom: renderValue ? 2 : 0
+  } : { 
+      minHeight: 48,
+      paddingBottom: renderValue ? 4 : 0
+  }
 )
-
-const containerDenseStyle = {
-  paddingTop: 24,
-  minHeight: 40
-}
-
-const containerFullStyle = {
-  paddingTop: 24,
-  minHeight: 48
-}
 
 const ValueHolder = styled.div({
   display: 'flex',
